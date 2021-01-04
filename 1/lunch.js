@@ -15,10 +15,10 @@
 
 const whatToDoForLunch = function(hungry, availableTime) {
   return (hungry ? (availableTime < 20 ? console.log("Pick something up and eat in the Lab or kitchen.") :
-                   (availableTime <= 30 ? console.log("Try Gastown for lunch.") :
-                   console.log("Maybe don't take the full time on break."))) :
-                                                          console.log("Return to work."));
-}
+    (availableTime <= 30 ? console.log("Try Gastown for lunch.") :
+      console.log("Maybe don't take the full time on break."))) :
+    console.log("Return to work."));
+};
 
 
 /*
