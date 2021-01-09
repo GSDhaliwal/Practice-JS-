@@ -1,4 +1,4 @@
-const diceRoller = function (numberOfDice) {
+const diceRoller = function(numberOfDice) {
   let rolledOutput = "Rolled " + numberOfDice + " dice: ";
 
   for (let dice = 0; dice < numberOfDice; dice++) {
@@ -6,6 +6,6 @@ const diceRoller = function (numberOfDice) {
   }
 
   return rolledOutput;
-}
+};
 
 console.log(diceRoller(process.argv[2]));

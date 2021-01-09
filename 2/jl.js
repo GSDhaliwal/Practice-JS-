@@ -6,8 +6,8 @@ const joinList = function(array) {
     finalString += "";
   } else {
     for (let i = 0; i < array.length; i++) {
-      i === (array.length - 1) ? finalString += array[i] : finalString += (array[i] + ", ")
-    } 
+      i === (array.length - 1) ? finalString += array[i] : finalString += (array[i] + ", ");
+    }
   }
   return finalString;
 };
@@ -17,4 +17,4 @@ const conceptList = ["gists", "types", "operators", "iteration", "problem solvin
 const concepts = joinList(conceptList);
 console.log(`Today I learned about ${concepts}.`);
 const concept = joinList("");
-console.log(`Today I learned about ${concept}.`)
+console.log(`Today I learned about ${concept}.`);
