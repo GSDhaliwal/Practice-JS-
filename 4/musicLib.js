@@ -70,9 +70,14 @@ console.log('-----');
 
 // adds an existing track to an existing playlist
 const addTrackToPlaylist = function(trackId, playlistId) {
-  
+  library.playlists[playlistId].tracks.push(trackId);
 }
 
+addTrackToPlaylist('t03', 'p01')
+printPlaylist('p01');
+console.log('-----');
+console.log('next function');
+console.log('-----');
 
 // generates a unique id
 // (already implemented: use this for addTrack and addPlaylist)
@@ -83,7 +88,7 @@ const generateUid = function() {
 
 // adds a track to the library
 const addTrack = function(name, artist, album) {
-
+  
 }
 
 
