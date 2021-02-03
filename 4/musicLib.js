@@ -105,8 +105,19 @@ console.log('-----');
 
 // adds a playlist to the library
 const addPlaylist = function(name) {
-
+  let randomPlaylistId = `p${generateUid()}`;
+  library.playlists[randomPlaylistId] = {
+    id: randomPlaylistId,
+    name: name,
+    tracks: []
+  }
 }
+
+addPlaylist("More Music");
+console.log(library.playlists);
+console.log('-----');
+console.log('next function');
+console.log('-----');
 
 
 // STRETCH:
