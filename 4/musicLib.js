@@ -88,9 +88,20 @@ const generateUid = function() {
 
 // adds a track to the library
 const addTrack = function(name, artist, album) {
-  
+  let randomTrackId = `t${generateUid()}`;
+  library.tracks[randomTrackId] = {
+    id: randomTrackId,
+    name: name,
+    artist: artist,
+    album: album,
+  }
 }
 
+addTrack("It Was a Good Day", "Ice Cube", "The Predtor");
+console.log(library.tracks)
+console.log('-----');
+console.log('next function');
+console.log('-----');
 
 // adds a playlist to the library
 const addPlaylist = function(name) {
