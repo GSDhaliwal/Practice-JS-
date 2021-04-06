@@ -7,4 +7,4 @@ const findWaldo = function(names, found) {
   })
 }
 
-findWaldo(["Bob", "Waldo", "Winston"], (index) => console.log(`Found Waldo at index ${index}!`));
+findWaldo(["Waldo", "Winston"], (index) => console.log(`Found Waldo at index ${index}!`));
