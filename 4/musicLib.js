@@ -11,7 +11,7 @@ const library = {
                    name: "Four Thirty-Three",
                    artist: "John Cage",
                    album: "Woodstock 1952"}
-          },
+  },
   playlists: { p01: { id: "p01",
                       name: "Coding Music",
                       tracks: ["t01", "t02"]
@@ -20,19 +20,31 @@ const library = {
                       name: "Other Playlist",
                       tracks: ["t03"]
                     }
-             }
+  },
+  printPlaylists: function () {
+    for (let playlist in this.playlists) {
+      console.log(`${playlist}: ${this.playlists[playlist].name} - ${this.playlists[playlist].tracks.length} tracks`)
+    }
+  },
+  printTracks: function() {
+    for (let track in this.tracks) {
+      console.log(`${track}: ${this.tracks[track].name} by ${this.tracks[track].artist} (${this.tracks[track].album})`)
+      }
+  }
 };
 
 // prints a list of all playlists, in the form:
 // p01: Coding Music - 2 tracks
 // p02: Other Playlist - 1 tracks
-const printPlaylists = function(object) {
+/*const printPlaylists = function(object) {
   for (let playlist in object.playlists) {
   console.log(`${playlist}: ${library.playlists[playlist].name} - ${library.playlists[playlist].tracks.length} tracks`)
   }
-}
+}*/
 
-printPlaylists(library)
+console.log('-----');
+library.printPlaylists()
+//printPlaylists(library)
 console.log('-----');
 console.log('next function');
 console.log('-----');
@@ -41,14 +53,14 @@ console.log('-----');
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
 // t02: Model View Controller by James Dempsey (WWDC 2003)
 // t03: Four Thirty-Three by John Cage (Woodstock 1952)
-const printTracks = function(object) {
+/*const printTracks = function(object) {
   for (let track in object.tracks) {
     console.log(`${track}: ${library.tracks[track].name} by ${library.tracks[track].artist} (${library.tracks[track].album})`)
     }
-}
-
-printTracks(library)
+}*/
+library.printTracks();
 console.log('-----');
+//printTracks(library)
 console.log('next function');
 console.log('-----');
 
