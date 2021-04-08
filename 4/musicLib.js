@@ -51,6 +51,14 @@ const library = {
       artist: artist,
       album: album,
     }
+  },
+  addPlaylist: function(name) {
+    let randomPlaylistId = `p${this.generateUid()}`;
+    this.playlists[randomPlaylistId] = {
+      id: randomPlaylistId,
+      name: name,
+      tracks: []
+    }
   }
 };
 
@@ -115,9 +123,9 @@ console.log('-----');
 
 // generates a unique id
 // (already implemented: use this for addTrack and addPlaylist)
-const generateUid = function() {
+/*const generateUid = function() {
   return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-}
+}*/
 
 
 // adds a track to the library
@@ -139,16 +147,17 @@ console.log('next function');
 console.log('-----');
 
 // adds a playlist to the library
-const addPlaylist = function(name) {
+/*const addPlaylist = function(name) {
   let randomPlaylistId = `p${generateUid()}`;
   library.playlists[randomPlaylistId] = {
     id: randomPlaylistId,
     name: name,
     tracks: []
   }
-}
+}*/
 
-addPlaylist("More Music");
+library.addPlaylist("More Music");
+//addPlaylist("More Music");
 console.log(library.playlists);
 console.log('-----');
 console.log('next function');
