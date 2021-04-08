@@ -30,6 +30,27 @@ const library = {
     for (let track in this.tracks) {
       console.log(`${track}: ${this.tracks[track].name} by ${this.tracks[track].artist} (${this.tracks[track].album})`)
       }
+  },
+  printPlaylist: function(playlistId) {
+    console.log(`${playlistId}: ${this.playlists[playlistId].name} - ${this.playlists[playlistId].tracks.length} tracks`);
+    for (let track in this.playlists[playlistId].tracks) {
+      console.log(`${this.playlists[playlistId].tracks[track]}: ${this.tracks[this.playlists[playlistId].tracks[track]].name} by ${this.tracks[this.playlists[playlistId].tracks[track]].artist} (${this.tracks[this.playlists[playlistId].tracks[track]].album})`);
+      }
+  },
+  addTrackToPlaylist: function(trackId, playlistId) {
+    this.playlists[playlistId].tracks.push(trackId);
+  },
+  generateUid: function() {
+    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+  },
+  addTrack: function(name, artist, album) {
+    let randomTrackId = `t${this.generateUid()}`;
+    this.tracks[randomTrackId] = {
+      id: randomTrackId,
+      name: name,
+      artist: artist,
+      album: album,
+    }
   }
 };
 
@@ -68,15 +89,15 @@ console.log('-----');
 // p01: Coding Music - 2 tracks
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
 // t02: Model View Controller by James Dempsey (WWDC 2003)
-const printPlaylist = function(playlistId) {
+/*const printPlaylist = function(playlistId) {
   console.log(`${playlistId}: ${library.playlists[playlistId].name} - ${library.playlists[playlistId].tracks.length} tracks`);
   for (let track in library.playlists[playlistId].tracks) {
     console.log(`${library.playlists[playlistId].tracks[track]}: ${library.tracks[library.playlists[playlistId].tracks[track]].name} by ${library.tracks[library.playlists[playlistId].tracks[track]].artist} (${library.tracks[library.playlists[playlistId].tracks[track]].album})`);
     }
-}
-
-printPlaylist('p01');
+}*/
+library.printPlaylist('p01');
 console.log('-----');
+//printPlaylist('p01');
 console.log('next function');
 console.log('-----');
 
@@ -84,10 +105,11 @@ console.log('-----');
 const addTrackToPlaylist = function(trackId, playlistId) {
   library.playlists[playlistId].tracks.push(trackId);
 }
-
-addTrackToPlaylist('t03', 'p01')
-printPlaylist('p01');
+library.addTrackToPlaylist('t03', 'p01')
+library.printPlaylist('p01');
 console.log('-----');
+//addTrackToPlaylist('t03', 'p01')
+//printPlaylist('p01');
 console.log('next function');
 console.log('-----');
 
@@ -99,7 +121,7 @@ const generateUid = function() {
 
 
 // adds a track to the library
-const addTrack = function(name, artist, album) {
+/*const addTrack = function(name, artist, album) {
   let randomTrackId = `t${generateUid()}`;
   library.tracks[randomTrackId] = {
     id: randomTrackId,
@@ -107,9 +129,10 @@ const addTrack = function(name, artist, album) {
     artist: artist,
     album: album,
   }
-}
+}*/
 
-addTrack("It Was a Good Day", "Ice Cube", "The Predtor");
+library.addTrack("It Was a Good Day", "Ice Cube", "The Predtor");
+//addTrack("It Was a Good Day", "Ice Cube", "The Predtor");
 console.log(library.tracks)
 console.log('-----');
 console.log('next function');
