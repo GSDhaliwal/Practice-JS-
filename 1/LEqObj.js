@@ -19,10 +19,10 @@ const eqObj = function(object1, object2) {
   for (const key in object1) {
     if (typeof object1[key] === "object" && object2[key]) {
       let recursionResult = eqObj(object1[key], object2[key]);
-      return recursionResult 
-      //if (!recursionResult) {
-          //return false;
-        //}
+      recursionResult 
+      if (!recursionResult) {
+          return false;
+        }
       } else if (!Array.isArray(object1[key]) && object1[key] !== object2[key]) {
       return false;
     } else if (eqArr(object1[key], object2[key]) === false) {
