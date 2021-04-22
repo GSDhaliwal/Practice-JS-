@@ -1,7 +1,4 @@
-const assertE = function(actual, expected) {
-  return (actual === expected ? console.log(`✅✅✅ Assertion Passed: ${actual} === ${expected}`) : console.log(`🛑🛑🛑 Assertion Failed: ${actual} !== ${expected}`));
-};
-
+const assertE = require('./LAssertE')
 
 const eqArr = function(array1, array2) {
   if (array1.length !== array2.length) {
@@ -19,15 +16,4 @@ const eqArr = function(array1, array2) {
   return true;
 };
 
-assertE(eqArr([1, 2, 3], [1, 2, 3]), true); // => true
-assertE(eqArr([1, 2, 3], [3, 2, 1]), false);// => false
-assertE(eqArr(["1", "2", "3"], ["1", "2", "3"]), true); // => true
-assertE(eqArr(["1", "2", "3"], ["1", "2", 3]), false); // => false
-
-assertE(eqArr([1, 2, 3], [1, 2, 3]), false); // => false
-assertE(eqArr([1, 2, 3], [3, 2, 1]), true);// => false
-
-assertE(eqArr([[2, 3], [4]], [[2, 3], [4]]), true) // => true
-
-assertE(eqArr([[2, 3], [4]], [[2, 3], [4, 5]]), false) // => false
-assertE(eqArr([[2, 3], [4]], [[2, 3], 4]), false) // => false
+module.exports = eqArr;
