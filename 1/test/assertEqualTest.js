@@ -101,3 +101,48 @@ describe("#head", () => {
     assert.strictEqual(head(["Hello", "Lighthouse", "Labs"]), "Hello");
   });
 });
+
+describe("#tail", () => {
+  it("returns ['Lighthouse', 'Labs'] for ['Hello', Lighthouse', 'Labs']", () => {
+    assert.deepEqual(tail(['Hello', 'Lighthouse', 'Labs']), ['Lighthouse', 'Labs']);
+  });
+  it("returns ['Lighthouse'] for ['Hello', 'Lighthouse']", () => {
+    assert.deepEqual(tail(['Hello', 'Lighthouse']), ['Lighthouse']);
+  });
+  it("returns ['Labs'] when ['Lighthouse', 'Labs']", () => {
+    assert.deepEqual(tail(['Lighthouse', 'Labs']), ['Labs']);
+  });
+  it("returns ['Hello'] when ['Here is', 'Hello', 'Lighthouse', 'Labs']", () => {
+    assert.deepEqual(tail(['Here is', 'Hello', 'Lighthouse', 'Labs']), ['Hello', 'Lighthouse', 'Labs']);
+  });
+});
+
+describe("#middle", () => {
+  it("returns [] for []", () => {
+    assert.deepEqual(mid([]), []);
+  });
+  it("returns [] for [1, 2]", () => {
+    assert.deepEqual(mid([1, 2]), []);
+  });
+  it("returns [] when []", () => {
+    assert.deepEqual(mid([1]), []);
+  });
+  it("returns [3] for [1, 3, 5]", () => {
+    assert.deepEqual(mid([1, 3, 5]), [3]);
+  });
+  it("returns [1] for [10, 4, 2, 7, 1, 7, 3, 20, 55]", () => {
+    assert.deepEqual(mid([10, 4, 2, 7, 1, 7, 3, 20, 55]), [1]);
+  });
+  it("returns [1, 7] for [10, 4, 2, 7, 1, 7, 3, 20, 55, 50]", () => {
+    assert.deepEqual(mid([10, 4, 2, 7, 1, 7, 3, 20, 55, 50]), [1, 7]);
+  });
+  it("does not return [10] for [10, 4, 2, 7, 1, 7, 3, 20, 55]", () => {
+    assert.deepEqual(mid([10, 4, 2, 7, 1, 7, 3, 20, 55]), [1]);
+  });
+  it("does not return [1] for [10, 4, 2, 7, 1, 7, 3, 20, 55, 100]", () => {
+    assert.deepEqual(mid([10, 4, 2, 7, 1, 7, 3, 20, 55, 100]), [1, 7]);
+  });
+  it("does not return [7, 3] for [10, 4, 2, 7, 1, 7, 3, 20, 55, 100]", () => {
+    assert.deepEqual(mid([10, 4, 2, 7, 1, 7, 3, 20, 55, 100]), [1, 7]);
+  });
+});
