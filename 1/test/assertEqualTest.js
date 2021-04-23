@@ -1,3 +1,5 @@
+const assert = require('chai').assert;
+
 const assertE = require('../LAssertE')
 const head = require('../LHead')
 const tail = require('../LTail')
@@ -5,6 +7,7 @@ const eqArr = require('../LEqArr')
 const assertArrEq = require('../LAssertArrEq')
 const mid = require('../LMid')
 
+/*
 console.log('====')
 console.log('assertE')
 console.log('====')
@@ -76,3 +79,25 @@ assertArrEq([1], mid([1, 2, 3])); //fail
 assertArrEq([5], mid([1, 2, 3, 4, 5])); //fail
 assertArrEq([3], mid([1, 2, 3, 4])); //fail
 assertArrEq([4, 2], mid([1, 2, 3, 4, 5, 6])); //fail
+*/
+
+describe("#head", () => {
+  it("returns 1 for [1, 2, 3]", () => {
+    assert.strictEqual(head([1, 2, 3]), 1);
+  });
+  it("returns '5' for ['5']", () => {
+    assert.strictEqual(head(['5']), '5'); 
+  });
+  it("does not return '5' for ['6']", () => {
+    assert.strictEqual(head(['6']), '6'); 
+  });
+  it("returns 'Hello' for ['Hello', 'Lighthouse', 'Labs']", () => {
+    assert.strictEqual(head(["Hello", "Lighthouse", "Labs"]), "Hello");
+  });
+  it("returns [] when empty", () => {
+    assert.strictEqual(head([]));
+  });
+  it("does not return 'Labs' for ['Hello', 'Lighthouse', 'Labs']", () => {
+    assert.strictEqual(head(["Hello", "Lighthouse", "Labs"]), "Hello");
+  });
+});
