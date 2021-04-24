@@ -1,3 +1,5 @@
+const assertE = require('./LAssertE');
+
 const findKey = (object, cb) => {
   for (let key in object) {
     if (cb(object[key])) {
@@ -6,10 +8,8 @@ const findKey = (object, cb) => {
   }
 };
 
-const assertE = function(actual, expected) {
-  return (actual === expected ? console.log(`✅✅✅ Assertion Passed: ${actual} === ${expected}`) : console.log(`🛑🛑🛑 Assertion Failed: ${actual} !== ${expected}`));
-};
-
+module.exports = findKey;
+/*
 let object1 = {
   "Blue Hill": { stars: 1 },
   "Akaleri":   { stars: 3 },
@@ -28,4 +28,4 @@ assertE(result1, "noma");
 assertE(result2, undefined);
 assertE(result3, "Blue Hill");
 assertE(result4, "Akaleri");
-
+*/

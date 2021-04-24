@@ -1,11 +1,7 @@
 const assert = require('chai').assert;
 
-const assertE = require('../LAssertE')
-const head = require('../LHead')
-const tail = require('../LTail')
-const eqArr = require('../LEqArr')
-const assertArrEq = require('../LAssertArrEq')
-const mid = require('../LMid')
+const { assertE, head, tail, eqArr, assertArrEq, mid } = require('../index')
+
 
 /*
 console.log('====')
@@ -79,7 +75,45 @@ assertArrEq([1], mid([1, 2, 3])); //fail
 assertArrEq([5], mid([1, 2, 3, 4, 5])); //fail
 assertArrEq([3], mid([1, 2, 3, 4])); //fail
 assertArrEq([4, 2], mid([1, 2, 3, 4, 5, 6])); //fail
+
+
+console.log('====')
+console.log('assertObjEqual')
+console.log('====')
+const ab = { a: "1", b: "2" };
+const ba = { b: "2", a: "1" };
+const abc = { a: "1", b: "2", c: "3" };
+const cd = { c: "1", d: ["2", 3] };
+const dc = { d: ["2", 3], c: "1" };
+const cd2 = { c: "1", d: ["2", 3, 4] };
+
+assertObjectsEqual(ab, ba); //true
+assertObjectsEqual(cd, cd2); //false
+assertObjectsEqual(abc, dc); //false
+
+
+console.log('====')
+console.log('assertE')
+console.log('====')
+const firstNames = [
+  "Karl",
+  "Salima",
+  "Agouhanna",
+  "Fang",
+  "Kavith",
+  "Jason",
+  "Salima",
+  "Fang",
+  "Joe"
+];
+
+const result1 = count(firstNames, { "Jason": true, "Karima": true, "Fang": true, "Agouhanna": false });
+assertE(result1["Jason"], 1);
+assertE(result1["Karima"], undefined);
+assertE(result1["Fang"], 2);
+assertE(result1["Agouhanna"], undefined);
 */
+
 
 describe("#head", () => {
   it("returns 1 for [1, 2, 3]", () => {
