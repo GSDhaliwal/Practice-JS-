@@ -7,13 +7,13 @@ const connect = function () {
     port: 50541
   });
 
-  // interpret incoming data as text
-  conn.setEncoding("utf8");
+
+  conn.setEncoding("utf8"); // interpret incoming data as text
 
   //'connect' event is triggered as soon as connection with server is established
   conn.on("connect", () => {
     console.log("connected to snake server")
-    conn.write("Name: GSD");
+    conn.write("Name: GSD"); //send message to server
   });
 
   //data event is triggered when server sends data to client
