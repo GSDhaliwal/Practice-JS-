@@ -1,10 +1,11 @@
 const net = require("net");
+const { IP, PORT, NAME } = require("./constants");
 
 // establishes a connection with the game server
 const connect = function () {
   const conn = net.createConnection({
-    host: "10.0.2.15",
-    port: 50541
+    host: IP,
+    port: PORT
   });
 
 
@@ -13,7 +14,7 @@ const connect = function () {
   //'connect' event is triggered as soon as connection with server is established
   conn.on("connect", () => {
     console.log("connected to snake server")
-    conn.write("Name: GSD"); //send message to server
+    conn.write(NAME); //send message to server
   });
 
   //data event is triggered when server sends data to client
