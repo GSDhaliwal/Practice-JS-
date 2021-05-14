@@ -1,4 +1,4 @@
-const { fetchMyIP } = require('./iss');
+const { fetchMyIP, fetchCoordsByIP } = require('./iss');
 
 /*
 fetchMyIP((error, ip) => {
@@ -12,3 +12,14 @@ fetchMyIP((error, ip) => {
   }
 })
 */
+
+fetchCoordsByIP('pp', (error, coords) => {
+
+  if (error) {
+    console.log('There was an error in the request:\n', error);
+  }
+
+  if (coords) {
+    console.log(coords);
+  }
+})
