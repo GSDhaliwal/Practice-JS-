@@ -12,13 +12,13 @@ const fetchMyIP = function(callback) {
   request('https://api.ipify.org?format=json', (error, response, body) => {
     
   if (error) {
-      callback(error, null);
+    return callback(error, null);
     }
 
     if (response.statusCode === 200) {
-      callback(null, JSON.parse(body).ip);
+      return callback(null, JSON.parse(body).ip);
     } else {
-      callback(Error(`Status Code ${response.statusCode} when fetching IP. Response: ${body}`), null);
+      return callback(Error(`Status Code ${response.statusCode} when fetching IP. Response: ${body}`), null);
     }
 
   });
@@ -28,7 +28,7 @@ const fetchCoordsByIP = (ip, callback) => {
   request(`https://freegeoip.app/json/${ip}`, (error, response, body) => {
     
   if (error) {
-      callback(error, null);
+    return callback(error, null);
     }
 
     if (response.statusCode === 200) {
@@ -37,9 +37,9 @@ const fetchCoordsByIP = (ip, callback) => {
           latitude: JSON.parse(body).latitude,
           longitude: JSON.parse(body).longitude
         }
-      callback(null, coordsObject);
+        return callback(null, coordsObject);
     } else {
-      callback(Error(`Status Code ${response.statusCode} when fetching Coords by IP. Response: ${body}`), null);
+      return callback(Error(`Status Code ${response.statusCode} when fetching Coords by IP. Response: ${body}`), null);
     }
 
   });
@@ -49,15 +49,41 @@ const fetchISSFlyOverTimes = (coordsObj, callback) => {
   request(`http://api.open-notify.org/iss/v1/?lat=${coordsObj.latitude}&lon=${coordsObj.longitude}`,(error, response, body) => {
 
     if (error) {
-      callback(error, null);
+      return callback(error, null);
     }
 
     if (response.statusCode === 200) {
-      callback(null, JSON.parse(body).response)
+      return callback(null, JSON.parse(body).response)
     } else {
-      callback(Error(`Status Code ${response.statusCode} when fetching fly over times. Response: ${body}`), null);
+      return callback(Error(`Status Code ${response.statusCode} when fetching fly over times. Response: ${body}`), null);
     }
   })
 }
 
-module.exports = { fetchMyIP, fetchCoordsByIP, fetchISSFlyOverTimes };
+const flyOverForMyLocation = (callback) => {
+
+  fetchMyIP((error, ip) => {
+    if (error) {
+      return callback(error, null)
+    }
+
+    fetchCoordsByIP(ip, (error, coords) => {
+      if (error) {
+        return callback(error, null)
+      }
+      
+      fetchISSFlyOverTimes(coords, (error, flyOVerTimes) => {
+        if (error) {
+          return callback(error, null)
+        }
+
+        if (coords) {
+          return callback(null, flyOVerTimes);
+        }
+
+      });
+    });
+  });
+};
+
+module.exports = { flyOverForMyLocation };
