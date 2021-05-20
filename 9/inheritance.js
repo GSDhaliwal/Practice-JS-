@@ -16,6 +16,10 @@ class Student extends Person {
   enroll(cohort) {
     this.cohort = cohort;
   }
+
+  bio() {
+    return `I'm a student at Lighthouse Labs (aka Labber). ${super.bio()}`;
+  }
 }
 
 class Mentor extends Person {
@@ -27,5 +31,9 @@ class Mentor extends Person {
   // specific to mentors
   goOffShift() {
     this.onShift = false;
+  }
+
+  bio() {
+    return `I'm a mentor at Lighthouse Labs. ${super.bio()}`;
   }
 }
