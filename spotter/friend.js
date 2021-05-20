@@ -39,6 +39,7 @@ const contacts = [
   },
 ];
 
+
 const findFriendInfo = (contactsList, contactName, contactInfo) => {
   let myFriend = contactsList.filter(contact => contact.name === contactName);
   if (myFriend.length > 0) {
