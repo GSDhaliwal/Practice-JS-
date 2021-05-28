@@ -3,11 +3,13 @@ class Pizza {
   constructor(size, crust) {
     this.size = size,
     this.crust = crust,
-    this.toppings = ["cheese"]
+    this._toppings = ["cheese"]
   }
 
   addTopping(topping) {
-    this.toppings.push(topping);
+    if (!this._toppings.includes(topping)) {
+      this._toppings.push(topping);
+    }
   }
 
   makeItWellDone() {
@@ -43,6 +45,9 @@ console.log('Pizza2: ', pizza2)
 
 let pizza = new Pizza('large');
 console.log(pizza)
-console.log(pizza.price);
-pizza.size = 'small'
-console.log(pizza)
+pizza.addTopping('tomato')
+console.log('1 ',pizza)
+pizza.addTopping('bacon')
+console.log('2 ',pizza)
+pizza.addTopping('tomato')
+console.log('3 ',pizza)
