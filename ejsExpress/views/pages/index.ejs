@@ -13,6 +13,21 @@
     <div class="jumbotron">
       <h1>This is great</h1>
       <p>Welcome to templating using EJS</p>
+
+      <h2>Variable</h2>
+      <p><%= tagline %></p>
+
+      <ul>
+        <% mascots.forEach((mascot) => { %>
+          <li>
+            <strong><em><%= mascot.name %></em></strong>
+            <ul>
+              <li><strong>representing</strong> <%= mascot.organization %></li>
+              <li><strong>born</strong> <%= mascot.birth_year %></li>
+            </ul>
+          </li>
+        <% }); %>
+      </ul>
     </div>
   </main>
   
