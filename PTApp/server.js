@@ -4,14 +4,14 @@ const PORT = 8080; //default port 8080
 
 app.set('view engine', 'ejs');
 
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 const urlDatabase = {
   "b2xVn2": "http://www.lighthouselabs.ca",
   "9sm5xK": "http://www.google.com"
 }
 
-const generateRandomString = function() {
+const generateRandomString = function () {
   let randomlyGeneratedString = '';
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   for (let iterations = 0; iterations < 6; iterations++) {
@@ -42,7 +42,7 @@ app.get('/urls/new', (req, res) => {
 });
 
 app.get('/urls/:shortUrl', (req, res) => {
-  const templateVars = { shortURL: req.params.shortUrl, longURL: urlDatabase[req.params.shortUrl]};
+  const templateVars = { shortURL: req.params.shortUrl, longURL: urlDatabase[req.params.shortUrl] };
   res.render('urls_show', templateVars);
 });
 
